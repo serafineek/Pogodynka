@@ -25,7 +25,7 @@ namespace API
         {
             driver.FindElement(By.ClassName("rodo__button")).Click();
         }
-        public async Task fillInput()
+        public void fillInput()
         {
             driver.FindElement(By.ClassName("search-input")).SendKeys(city);
             driver.FindElement(By.ClassName("hint-link")).Click();
@@ -63,7 +63,7 @@ namespace API
             string pressureXPath = "//*[@id=\"page-wrap\"]/div[2]/div[1]/main/section[1]/div[2]/div[1]/ul/li[1]/div[4]/ul/li[5]/span[2]/span";
             string pressure = driver.FindElement(By.XPath(pressureXPath)).Text;
             string newpressue = "";
-            newpressue = deleteTextFromData(pressure, 2);
+            newpressue = deleteTextFromData(pressure, 4);
             return int.Parse(newpressue); 
         }
         public int getCurrentWind()
