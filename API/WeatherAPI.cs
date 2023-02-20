@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 using System.Numerics;
 
 
@@ -7,14 +8,14 @@ namespace API
 {
     public class WeatherAPI
     {
-        private ChromeDriver driver;
+        private FirefoxDriver driver;
         private string city;
         public WeatherAPI(string city)
         {
-            ChromeOptions options = new ChromeOptions();
+            FirefoxOptions options = new FirefoxOptions();
             options.AddArgument("--log-level=3");
             options.AddArgument("--disable-web-security");
-            driver = new ChromeDriver(options);
+            driver = new FirefoxDriver(options);
             this.city = city;
         }
         public string City()
