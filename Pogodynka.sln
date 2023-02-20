@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pogodynka", "Pogodynka\Pogodynka.csproj", "{7A9BF1CD-7132-4BD3-9E25-A89A5C0FD149}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pogodynka", "Pogodynka\Pogodynka.csproj", "{7A9BF1CD-7132-4BD3-9E25-A89A5C0FD149}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{04A0868E-7CD0-44D9-A946-AA08C6D4F780}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{04A0868E-7CD0-44D9-A946-AA08C6D4F780}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testy Jednostkowe", "Testy Jednostkowe\Testy Jednostkowe.csproj", "{3AC7F7B2-2596-4274-B259-8F0FACE5E521}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{04A0868E-7CD0-44D9-A946-AA08C6D4F780}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04A0868E-7CD0-44D9-A946-AA08C6D4F780}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04A0868E-7CD0-44D9-A946-AA08C6D4F780}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AC7F7B2-2596-4274-B259-8F0FACE5E521}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AC7F7B2-2596-4274-B259-8F0FACE5E521}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AC7F7B2-2596-4274-B259-8F0FACE5E521}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AC7F7B2-2596-4274-B259-8F0FACE5E521}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
