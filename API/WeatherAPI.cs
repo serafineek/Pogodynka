@@ -69,7 +69,7 @@ namespace API
         }
         public int getCurrentWind()
         {
-            string windXPath = "//*[@id=\"page-wrap\"]/div[2]/div[1]/main/section[1]/div[2]/div[1]/ul/li[1]/div[4]/ul/li[3]/span[2]/span";
+            string windXPath = "/html/body/div[4]/div[2]/div[1]/main/section[1]/div[2]/div[1]/ul/li[1]/div[4]/ul/li[3]/span[2]/span";
             string wind = driver.FindElement(By.XPath(windXPath)).Text;
             string newwind = "";
             

@@ -24,5 +24,9 @@ namespace Pogodynka
             this.wind = wind;
             this.airHumidity = airHumidity;
         }
+        public void actualForeCast()
+        {
+            Console.WriteLine($"[{city}] ({weatherCondition}) Temperatura: {temperature}°C Ciśnienie: {pressure}hPa Wiatr w porywach do: {wind}km/h Wilgotność powietrza: {airHumidity}");
+        }
     }
 }
