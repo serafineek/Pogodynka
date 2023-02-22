@@ -31,9 +31,9 @@ namespace Pogodynka
 
             //Console.WriteLine($"[{city}] ({weatherCondition}) Temperatura: {temperature}°C Ciśnienie: {pressure}hPa Wiatr w porywach do: {wind}km/h Wilgotność powietrza: {airHumidity}");
             Console.Clear();
-            forecastText.Append($"[{city}]  ({weatherCondition})");
+            forecastText.Append($"[{city}] ({weatherCondition})");
             forecastText.AppendLine("");
-            forecastText.Append($"Temperatura: {temperature}°C   Ciśnienie: {pressure}hPa");
+            forecastText.Append($"Temperatura: {temperature}°C  \nCiśnienie: {pressure}hPa");
             forecastText.AppendLine("");
             forecastText.Append($"Wiatr w porywach do: {wind}km/h \nWilgotność powietrza: {airHumidity}");
             Console.WriteLine(forecastText);

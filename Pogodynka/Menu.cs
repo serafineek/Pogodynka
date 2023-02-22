@@ -1,4 +1,5 @@
 ﻿using API;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace Pogodynka
     {
         private StringBuilder welcomeText = new StringBuilder();
         private StringBuilder optionText = new StringBuilder();
+        private StringBuilder loading = new StringBuilder();
         public void welcome()
         {
         
@@ -21,7 +23,6 @@ namespace Pogodynka
             welcomeText.AppendLine();
             welcomeText.Append("\u001b[38;2;230;190;16m ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
             Console.WriteLine(welcomeText);
-            Console.ForegroundColor = ConsoleColor.Black;
             option();
         }
         public void option()
@@ -32,6 +33,7 @@ namespace Pogodynka
             optionText.Append("                                           2. Pogoda długoterminowa");
             Console.WriteLine(optionText);
             choiceOption();
+            
         }
         public void choiceOption()
         {
@@ -40,7 +42,8 @@ namespace Pogodynka
                 switch (Console.ReadKey(true).Key)
                 {
                     case ConsoleKey.W:
-                        WeatherAPI api = new WeatherAPI("Tarnobrzeg");
+                        WeatherAPI api = new WeatherAPI("Londyn");
+             
                         api.connect();
                         Weather forecast = new Weather(api.City(), api.getCurrentWeatherCondition(), api.getCurrentTemperature(), api.getCurrentPressure(), api.getCurrentWind(), api.getCurrentAirHumidity());
                         forecast.actualForeCast();
