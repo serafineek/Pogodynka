@@ -14,7 +14,7 @@ namespace API
         {
             FirefoxOptions options = new FirefoxOptions();
             options.AddArgument("--log-level=3");
-            //options.AddArgument("--headless");
+            options.AddArgument("--headless");
             options.AddArgument("--disable-web-security");
             driver = new FirefoxDriver(options);
             this.city = city;

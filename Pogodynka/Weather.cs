@@ -35,7 +35,7 @@ namespace Pogodynka
             forecastText.AppendLine("");
             forecastText.Append($"Temperatura: {temperature}°C  \nCiśnienie: {pressure}hPa");
             forecastText.AppendLine("");
-            forecastText.Append($"Wiatr w porywach do: {wind}km/h \nWilgotność powietrza: {airHumidity}");
+            forecastText.Append($"Prędkość Wiatru: {wind}km/h \nWilgotność powietrza: {airHumidity}");
             Console.WriteLine(forecastText);
         }
     }
