@@ -29,11 +29,10 @@ namespace Pogodynka
         }
         public void actualForeCast()
         {
-       
             ASCIGenerator ascitext = new(city);
             Console.Write("\u001b[38;2;230;190;16m");
             ascitext.printASCICity();
-            forecastText.Append($"Stan pogody: ({weatherCondition})");
+            forecastText.Append($"Stan pogody: {weatherCondition}");
             forecastText.AppendLine("");
             forecastText.Append($"Temperatura: {temperature}°C  \nCiśnienie: {pressure}hPa");
             forecastText.AppendLine("");
