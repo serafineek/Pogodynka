@@ -1,4 +1,5 @@
-﻿using System;
+﻿using API;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,14 +29,16 @@ namespace Pogodynka
         }
         public void actualForeCast()
         {
-            //Console.WriteLine($"[{city}] ({weatherCondition}) Temperatura: {temperature}°C Ciśnienie: {pressure}hPa Wiatr w porywach do: {wind}km/h Wilgotność powietrza: {airHumidity}");
-            Console.Clear();
-            forecastText.Append($"[{city}] ({weatherCondition})");
+       
+            ASCIGenerator ascitext = new(city);
+            Console.Write("\u001b[38;2;230;190;16m");
+            ascitext.printASCICity();
+            forecastText.Append($"Stan pogody: ({weatherCondition})");
             forecastText.AppendLine("");
             forecastText.Append($"Temperatura: {temperature}°C  \nCiśnienie: {pressure}hPa");
             forecastText.AppendLine("");
             forecastText.Append($"Prędkość Wiatru: {wind}km/h \nWilgotność powietrza: {airHumidity}");
-            Console.WriteLine(forecastText);
+            Console.WriteLine(forecastText); 
         }
     }
 }

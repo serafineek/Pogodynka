@@ -13,9 +13,15 @@ namespace API
         public WeatherAPI(string city)
         {
             FirefoxOptions options = new FirefoxOptions();
-            options.AddArgument("--log-level=3");
+            options.AddArgument("--no-sandbox");
             options.AddArgument("--headless");
-            options.AddArgument("--disable-web-security");
+            options.AddArgument("--disable-gpu");
+            options.AddArgument("--disable-crash-reporter");
+            options.AddArgument("--disable-extensions");
+            options.AddArgument("--disable-in-process-stack-traces");
+            options.AddArgument("--disable-logging");
+            options.AddArgument("--disable-dev-shm-usage");
+            options.AddArgument("--log-level=3");
             driver = new FirefoxDriver(options);
             this.city = city;
         }
@@ -44,7 +50,7 @@ namespace API
             Thread.Sleep(1000);
             acceptCookies();
             fillInput();
-            Thread.Sleep(4000);
+            Thread.Sleep(2000);
         }
         public int getCurrentTemperature()
         {
