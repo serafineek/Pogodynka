@@ -1,7 +1,5 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
-using System.Numerics;
 
 
 namespace API
@@ -82,6 +80,7 @@ namespace API
             int wind = Convert.ToInt32(driver.FindElement(By.XPath(windXPath)).Text);
             return wind;
         }
+
         public string deleteTextFromData(string value,int convLength)
         {
             string newvalue = "";

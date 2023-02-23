@@ -41,7 +41,8 @@ namespace Pogodynka
                 switch (Console.ReadKey(true).Key)
                 {
                     case ConsoleKey.W:
-                        WeatherAPI api = new WeatherAPI("Tarnobrzeg");
+                        WeatherAPI api = new WeatherAPI("Londyn");
+
                         api.connect();
                         Weather forecast = new Weather(api.City(), api.getCurrentWeatherCondition(), api.getCurrentTemperature(), api.getCurrentPressure(), api.getCurrentWind(), api.getCurrentAirHumidity());
                         forecast.actualForeCast();
