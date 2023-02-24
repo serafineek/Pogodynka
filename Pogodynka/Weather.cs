@@ -30,7 +30,7 @@ namespace Pogodynka
         public void actualForeCast()
         {
             ASCIGenerator ascitext = new(city);
-            Console.Write("\u001b[38;2;230;190;16m");
+            Console.WriteLine("\u001b[38;2;230;190;16m\n");
             ascitext.printASCICity();
             forecastText.Append($"Stan pogody: {weatherCondition}");
             forecastText.AppendLine("");
