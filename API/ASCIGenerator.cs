@@ -37,7 +37,7 @@ namespace API
            
             Console.Clear();
             driver.Navigate().GoToUrl($"https://patorjk.com/software/taag/#p=display&f=ANSI%20Regular&t={city}");
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             Console.WriteLine();
             Console.WriteLine("\n" + driver.FindElement(By.Id("taag_output_text")).Text);
         }

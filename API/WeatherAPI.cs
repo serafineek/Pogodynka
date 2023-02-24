@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
-
+using System.Collections.Generic;
 
 namespace API
 {
@@ -12,7 +12,7 @@ namespace API
         {
             FirefoxOptions options = new FirefoxOptions();
             options.AddArgument("--no-sandbox");
-            options.AddArgument("--headless");
+            //options.AddArgument("--headless");
             options.AddArgument("--disable-gpu");
             options.AddArgument("--disable-crash-reporter");
             options.AddArgument("--disable-extensions");
@@ -34,21 +34,31 @@ namespace API
         }
         public void fillInput()
         {
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             string searchInput = "//*[@id=\"query\"]";
             driver.FindElement(By.XPath("//*[@id=\"query\"]")).Click();
             driver.FindElement(By.XPath(searchInput)).SendKeys(city);
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             driver.FindElement(By.XPath(searchInput)).SendKeys(Keys.Enter);
+            Thread.Sleep(3000);
         }
-        public void connect()
+        
+        public void connectToCurrentForeCast()
         {
-           
             driver.Navigate().GoToUrl("https://pogoda.wp.pl");
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             acceptCookies();
             fillInput();
-            Thread.Sleep(2000);
+            Thread.Sleep(5000);
+        }
+        public void connectToLongTermForeCast()
+        {
+            driver.Navigate().GoToUrl("https://pogoda.wp.pl");
+            Thread.Sleep(500);
+            acceptCookies();
+            fillInput();
+            string longTermForeCastXPath = "//*[@id=\"__layout\"]/div/div[7]/div[2]/a[2]";
+            driver.FindElement(By.XPath(longTermForeCastXPath)).Click();        
         }
         public int getCurrentTemperature()
         {
@@ -80,7 +90,6 @@ namespace API
             int wind = Convert.ToInt32(driver.FindElement(By.XPath(windXPath)).Text);
             return wind;
         }
-
         public string deleteTextFromData(string value,int convLength)
         {
             string newvalue = "";
@@ -89,6 +98,33 @@ namespace API
                 newvalue += value[i];
             }
             return newvalue;
+        }
+        public List<KeyValuePair<string, string>> getDayForeCast(int countForecastDays)
+        {
+            
+            /*string dateXPath = $"//*[@id=\"__layout\"]/div/div[7]/div[3]/div[2]/div[1]/div/ul/li[{i}]/div/div[1]/span[2]";
+            string weatherConditionXPath = $"//*[@id=\"__layout\"]/div/div[7]/div[3]/div[2]/div[1]/div/ul/li[{i}]/div/div[2]/div/div/span[2]";
+            string temperatureXPath = $"//*[@id=\"__layout\"]/div/div[7]/div[3]/div[2]/div[1]/div/ul/li[{i}]/div/div[2]/div/span";
+            string pressureXPath = $"//*[@id=\"__layout\"]/div/div[7]/div[3]/div[2]/div[1]/div/ul/li[{i}]/div/div[4]/span[2]";
+            string airHumidityXPath = $"//*[@id=\"__layout\"]/div/div[7]/div[3]/div[2]/div[1]/div/ul/li[{i}]/div/div[6]/span[2]";*/
+            List<KeyValuePair<string,string>> dayForeCast = new List<KeyValuePair<string,string>>();
+            int i = 1;
+            while(i<countForecastDays)
+            {
+                /*dayForeCast.Add(driver.FindElement(By.XPath(dateXPath)).Text);
+                dayForeCast.Add(driver.FindElement(By.XPath(weatherConditionXPath)).Text);
+                dayForeCast.Add(driver.FindElement(By.XPath(temperatureXPath)).Text);
+                dayForeCast.Add(driver.FindElement(By.XPath(pressureXPath)).Text);
+                dayForeCast.Add(driver.FindElement(By.XPath(airHumidityXPath)).Text);
+                */
+                dayForeCast.Add(new KeyValuePair<string, string>("data",driver.FindElement(By.XPath($"//*[@id=\"__layout\"]/div/div[7]/div[3]/div[2]/div[1]/div/ul/li[{i}]/div/div[1]/span[2]")).Text));
+                dayForeCast.Add(new KeyValuePair<string, string>("stanPogody",driver.FindElement(By.XPath($"//*[@id=\"__layout\"]/div/div[7]/div[3]/div[2]/div[1]/div/ul/li[{i}]/div/div[2]/div/div/span[2]")).Text));
+                dayForeCast.Add(new KeyValuePair<string, string>("temperatura", driver.FindElement(By.XPath($"//*[@id=\"__layout\"]/div/div[7]/div[3]/div[2]/div[1]/div/ul/li[{i}]/div/div[2]/div/span")).Text));
+                dayForeCast.Add(new KeyValuePair<string, string>("cisnienie", driver.FindElement(By.XPath($"//*[@id=\"__layout\"]/div/div[7]/div[3]/div[2]/div[1]/div/ul/li[{i}]/div/div[4]/span[2]")).Text));
+                dayForeCast.Add(new KeyValuePair<string, string>("wilgotnosc", driver.FindElement(By.XPath($"//*[@id=\"__layout\"]/div/div[7]/div[3]/div[2]/div[1]/div/ul/li[{i}]/div/div[6]/span[2]")).Text));
+                i++;
+            }
+            return dayForeCast;
         }
     }
 }

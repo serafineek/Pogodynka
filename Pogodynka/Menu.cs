@@ -12,7 +12,10 @@ namespace Pogodynka
     {
         private StringBuilder welcomeText = new StringBuilder();
         private StringBuilder optionText = new StringBuilder();
-        private StringBuilder loading = new StringBuilder();
+        private StringBuilder loadingBar = new StringBuilder();
+        Weather forecast;
+        private WeatherAPI api;
+        List<Weather> weathersList;
         public void welcome()
         {
         
@@ -30,7 +33,6 @@ namespace Pogodynka
             optionText.Append("                                           1. Aktualna prognoza pogody\n");
             optionText.Append("                                           2. Pogoda długoterminowa");
             Console.WriteLine(optionText);
-            Console.ForegroundColor = ConsoleColor.Black;
             choiceOption();
             
         }
@@ -41,16 +43,26 @@ namespace Pogodynka
                 switch (Console.ReadKey(true).Key)
                 {
                     case ConsoleKey.W:
-                        WeatherAPI api = new WeatherAPI("Londyn");
-
-                        api.connect();
-                        Weather forecast = new Weather(api.City(), api.getCurrentWeatherCondition(), api.getCurrentTemperature(), api.getCurrentPressure(), api.getCurrentWind(), api.getCurrentAirHumidity());
+                        Console.Clear();
+                        api = new WeatherAPI("Londyn");
+                        api.connectToCurrentForeCast();
+                        forecast = new Weather(api.City(), api.getCurrentWeatherCondition(), api.getCurrentTemperature(), api.getCurrentPressure(), api.getCurrentWind(), api.getCurrentAirHumidity());
                         forecast.actualForeCast();
+                        
                         break;
                     case ConsoleKey.S:
+                        Console.Clear();
+                        api = new WeatherAPI("Londyn");
+                        api.connectToLongTermForeCast();
+                        Thread.Sleep(3000);
+                        var list = api.getDayForeCast(5);
+                        forecast = new Weather("Londyn",list);
+                        Console.Clear();
+                        forecast.longForeCast();
                         break;
                 }
             }
         }
+        
     }
 }
