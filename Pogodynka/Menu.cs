@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,13 +14,12 @@ namespace Pogodynka
         private StringBuilder welcomeText = new StringBuilder();
         private StringBuilder optionText = new StringBuilder();
         private StringBuilder loadingBar = new StringBuilder();
-        Weather forecast;
+        private Weather forecast;
         string city;
         private WeatherAPI api;
        
         public void welcome()
         {
-        
             Console.Clear();
             welcomeText.Append("\u001b[38;2;230;190;16m ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
             welcomeText.Append("\x1b[38;2;73;230;16m   \r\n \r\n                      ██████╗  ██████╗  ██████╗  ██████╗ ██████╗ ██╗   ██╗███╗   ██╗██╗  ██╗ █████╗ \r\n                      ██╔══██╗██╔═══██╗██╔════╝ ██╔═══██╗██╔══██╗╚██╗ ██╔╝████╗  ██║██║ ██╔╝██╔══██╗\r\n                      ██████╔╝██║   ██║██║  ███╗██║   ██║██║  ██║ ╚████╔╝ ██╔██╗ ██║█████╔╝ ███████║\r\n                      ██╔═══╝ ██║   ██║██║   ██║██║   ██║██║  ██║  ╚██╔╝  ██║╚██╗██║██╔═██╗ ██╔══██║\r\n                      ██║     ╚██████╔╝╚██████╔╝╚██████╔╝██████╔╝   ██║   ██║ ╚████║██║  ██╗██║  ██║\r\n                      ╚═╝      ╚═════╝  ╚═════╝  ╚═════╝ ╚═════╝    ╚═╝   ╚═╝  ╚═══╝╚═╝  ╚═╝╚═╝  ╚═╝\r\n                                                                                                    \r\n");
@@ -35,7 +35,6 @@ namespace Pogodynka
             optionText.Append("                                           2. Pogoda długoterminowa");
             Console.WriteLine(optionText);
             choiceOption();
-            
         }
         public void choiceOption()
         {
@@ -44,7 +43,8 @@ namespace Pogodynka
                 switch (Console.ReadKey(true).Key)
                 {
                     case ConsoleKey.W:
-                        Console.Clear();
+                        Console.WriteLine("\n\nPobieranie danych meteorologicznych...");
+                        Console.ForegroundColor = ConsoleColor.Black;
                         city = "Londyn";
                         api = new WeatherAPI(city);
                         api.connectToCurrentForeCast();
@@ -52,7 +52,8 @@ namespace Pogodynka
                         forecast.actualForeCast();                  
                         break;
                     case ConsoleKey.S:
-                        Console.Clear();
+                        Console.WriteLine("\n\nPobieranie danych meteorologicznych...");
+                        Console.ForegroundColor = ConsoleColor.Black;
                         city = "Londyn";
                         api = new WeatherAPI(city);
                         api.connectToLongTermForeCast();
@@ -69,6 +70,5 @@ namespace Pogodynka
                 }
             }
         }
-        
     }
 }
