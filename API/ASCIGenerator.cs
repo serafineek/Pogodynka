@@ -15,7 +15,6 @@ namespace API
     {
         ChromeDriver driver;
         private string city;
-
         public ASCIGenerator(string city)
         {
             this.city = city;
@@ -36,11 +35,56 @@ namespace API
         public void printASCICity()
         {
             Console.Clear();
+            string city = removePolishLetters();
             driver.Navigate().GoToUrl($"https://patorjk.com/software/taag/#p=display&f=ANSI%20Regular&t={city}");
             Thread.Sleep(500);
             Console.WriteLine();
             Console.WriteLine("\n" + driver.FindElement(By.Id("taag_output_text")).Text);
         }
-        
+        public string removePolishLetters()
+        {
+            city = city.ToUpper();
+            string newcity = "";
+            for (int i = 0; i < city.Length; i++)
+            {
+                if (city[i].Equals('Ó'))
+                {
+                    newcity += 'O';
+                }
+                else if (city[i].Equals('Ł'))
+                {
+                    newcity += 'L';
+                }
+                else if (city[i].Equals('Ż'))
+                {
+                    newcity += 'Z';
+                }
+                else if (city[i].Equals('Ź'))
+                {
+                    newcity += 'Z';
+                }
+                else if (city[i].Equals('Ń'))
+                {
+                    newcity += 'N';
+                }
+                else if (city[i].Equals('Ć'))
+                {
+                    newcity += 'C';
+                }
+                else if (city[i].Equals('Ą'))
+                {
+                    newcity += 'A';
+                }
+                else if (city[i].Equals('Ę'))
+                {
+                    newcity += 'E';
+                }
+                else
+                {
+                    newcity += city[i];
+                }
+            }
+            return newcity;
+        }
     }
 }
