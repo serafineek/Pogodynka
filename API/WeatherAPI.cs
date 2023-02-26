@@ -8,7 +8,7 @@ namespace API
     public class WeatherAPI
     {
         private ChromeDriver driver;
-        private string city;
+        private string city { get; init;}
         public WeatherAPI(string city)
         {
             ChromeOptions options = new ChromeOptions();

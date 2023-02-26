@@ -8,9 +8,9 @@ namespace Pogodynka
 {
     internal class FileWritter
     {
-        private string forecastText;
-        private string path;
-        private string fileName;
+        private string forecastText { get; init; }
+        private string path { get; init; }
+        private string fileName { get; init; }
 
         public FileWritter(string path, string forecastText, string fileName)
         {
@@ -22,9 +22,11 @@ namespace Pogodynka
         {
             try
             {
-                Console.WriteLine("zapisywanie do pliku...");
+                
                 File.WriteAllText(path + fileName + ".csv", forecastText,Encoding.UTF32);
-            }catch(Exception e)
+                Console.WriteLine("\nPlik " + fileName +".csv został zapisany!");
+            }
+            catch(Exception e)
             {
                 Console.WriteLine(e);
             }

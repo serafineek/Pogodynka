@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using System;
 using System.Collections.Generic;
@@ -12,13 +13,13 @@ namespace API
 {
     public class ASCIGenerator
     {
-        FirefoxDriver driver;
+        ChromeDriver driver;
         private string city;
 
         public ASCIGenerator(string city)
         {
             this.city = city;
-            FirefoxOptions options = new FirefoxOptions();
+            ChromeOptions options = new ChromeOptions();
             options.AddArgument("--window-size=1920,1080");
             options.AddArgument("--no-sandbox");
             options.AddArgument("--headless");
@@ -30,11 +31,10 @@ namespace API
             options.AddArgument("--disable-dev-shm-usage");
             options.AddArgument("--log-level=3");
             options.AddArgument("--output=/dev/null");
-            driver = new FirefoxDriver(options);
+            driver = new ChromeDriver(options);
         }
         public void printASCICity()
         {
-           
             Console.Clear();
             driver.Navigate().GoToUrl($"https://patorjk.com/software/taag/#p=display&f=ANSI%20Regular&t={city}");
             Thread.Sleep(500);

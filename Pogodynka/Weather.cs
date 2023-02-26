@@ -9,12 +9,12 @@ namespace Pogodynka
 {
     public class Weather
     {
-        private string city;
-        private string weatherCondition;
-        private int temperature;
-        private int pressure;
-        private int wind;
-       
+        private string city { get; init; }
+        private string weatherCondition { get; init; }
+        private int temperature { get; init; }
+        private int pressure { get; init; }
+        private int wind { get; init; }
+
         private string airHumidity;
         List<KeyValuePair<string, string>> dayForecastList;
         StringBuilder forecastText = new StringBuilder();
@@ -37,6 +37,7 @@ namespace Pogodynka
         }
         public void actualForeCast()
         {
+            Console.Clear();
             ascitext = new(city);
             Console.WriteLine("\u001b[38;2;230;190;16m\n");
             ascitext.printASCICity();
@@ -51,6 +52,7 @@ namespace Pogodynka
         {  
             ascitext = new(city);
             Console.Clear();
+            Console.WriteLine("\u001b[38;2;230;190;16m\n");
             ascitext.printASCICity();
             forecastText.AppendLine("");
             int i = 0;
