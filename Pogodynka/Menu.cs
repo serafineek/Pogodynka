@@ -14,8 +14,9 @@ namespace Pogodynka
         private StringBuilder optionText = new StringBuilder();
         private StringBuilder loadingBar = new StringBuilder();
         Weather forecast;
+        string city;
         private WeatherAPI api;
-        List<Weather> weathersList;
+       
         public void welcome()
         {
         
@@ -44,21 +45,26 @@ namespace Pogodynka
                 {
                     case ConsoleKey.W:
                         Console.Clear();
-                        api = new WeatherAPI("Londyn");
+                        city = "Londyn";
+                        api = new WeatherAPI(city);
                         api.connectToCurrentForeCast();
                         forecast = new Weather(api.City(), api.getCurrentWeatherCondition(), api.getCurrentTemperature(), api.getCurrentPressure(), api.getCurrentWind(), api.getCurrentAirHumidity());
-                        forecast.actualForeCast();
-                        
+                        forecast.actualForeCast();                  
                         break;
                     case ConsoleKey.S:
                         Console.Clear();
-                        api = new WeatherAPI("Londyn");
+                        city = "Londyn";
+                        api = new WeatherAPI(city);
                         api.connectToLongTermForeCast();
                         Thread.Sleep(3000);
-                        var list = api.getDayForeCast(5);
-                        forecast = new Weather("Londyn",list);
+                        var list = api.getDayForeCast(10);
+                        forecast = new Weather(city,list);
                         Console.Clear();
-                        forecast.longForeCast();
+                        string forecastText = forecast.longForeCast();
+                        Console.WriteLine(forecastText);
+                        Thread.Sleep(2000);
+                        FileWritter file = new FileWritter(@"../../../ForeCasts/", forecastText,city);
+                        file.saveForeCast();
                         break;
                 }
             }

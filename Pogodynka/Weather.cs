@@ -47,21 +47,23 @@ namespace Pogodynka
             forecastText.Append($"Prędkość Wiatru: {wind}km/h \nWilgotność powietrza: {airHumidity}");
             Console.WriteLine(forecastText); 
         }
-        public void longForeCast()
-        {
-            
+        public string longForeCast()
+        {  
             ascitext = new(city);
+            Console.Clear();
             ascitext.printASCICity();
+            forecastText.AppendLine("");
             int i = 0;
             foreach (var dayForecast in dayForecastList)
             {
                 if(i%5==0)
                 {
-                    Console.WriteLine();
+                    forecastText.AppendLine("");
                 }
-                Console.Write(" " + dayForecast.Value);
+                forecastText.Append(dayForecast.Value + "   ");
                 i++;
             }
+            return forecastText.ToString();
         }
     }
 }
