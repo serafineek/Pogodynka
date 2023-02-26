@@ -14,7 +14,6 @@ namespace Pogodynka
         private int temperature { get; init; }
         private int pressure { get; init; }
         private int wind { get; init; }
-
         private string airHumidity;
         List<KeyValuePair<string, string>> dayForecastList;
         StringBuilder forecastText = new StringBuilder();

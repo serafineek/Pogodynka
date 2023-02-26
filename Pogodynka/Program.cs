@@ -1,5 +1,5 @@
 ﻿using API;
 using Pogodynka;
-Console.Title = "Pogodynka";
+Console.Title = "POGODYNKA";
 Menu menu = new Menu();
 menu.welcome();

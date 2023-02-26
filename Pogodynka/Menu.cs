@@ -54,7 +54,7 @@ namespace Pogodynka
                     case ConsoleKey.S:
                         Console.WriteLine("\n\nPobieranie danych meteorologicznych...");
                         Console.ForegroundColor = ConsoleColor.Black;
-                        city = "Londyn";
+                        city = "Białystok";
                         api = new WeatherAPI(city);
                         api.connectToLongTermForeCast();
                         Thread.Sleep(3000);
