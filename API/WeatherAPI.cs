@@ -39,7 +39,6 @@ namespace API
             driver.FindElement(By.XPath(searchInput)).SendKeys(Keys.Enter);
             Thread.Sleep(3000);
         }
-        
         public void connectToCurrentForeCast()
         {
             driver.Navigate().GoToUrl("https://pogoda.wp.pl");

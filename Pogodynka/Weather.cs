@@ -51,10 +51,13 @@ namespace Pogodynka
         {  
             ascitext = new(city);
             Console.Clear();
+           
             Console.WriteLine("\u001b[38;2;230;190;16m\n");
             ascitext.printASCICity();
+            
             forecastText.AppendLine("");
             int i = 0;
+           
             foreach (var dayForecast in dayForecastList)
             {
                 if(i%5==0)

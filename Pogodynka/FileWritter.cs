@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pogodynka
 {
-    internal class FileWritter
+    public class FileWritter
     {
         private string forecastText { get; init; }
         private string path { get; init; }
@@ -21,8 +21,7 @@ namespace Pogodynka
         public void saveForeCast()
         {
             try
-            {
-                
+            {          
                 File.WriteAllText(path + fileName + ".csv", forecastText,Encoding.UTF32);
                 Console.WriteLine("\nPlik " + fileName +".csv został zapisany!");
             }

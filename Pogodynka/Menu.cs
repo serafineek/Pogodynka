@@ -13,11 +13,9 @@ namespace Pogodynka
     {
         private StringBuilder welcomeText = new StringBuilder();
         private StringBuilder optionText = new StringBuilder();
-        private StringBuilder loadingBar = new StringBuilder();
         private Weather forecast;
         string city;
         private WeatherAPI api;
-       
         public void welcome()
         {
             Console.Clear();
