@@ -2,4 +2,4 @@
 using Pogodynka;
 Console.Title = "POGODYNKA";
 Menu menu = new Menu();
-menu.welcome();
+menu.browserInformation();

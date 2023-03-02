@@ -68,6 +68,10 @@ namespace API
                 {
                     newcity += 'N';
                 }
+                else if (city[i].Equals('Ś'))
+                {
+                    newcity += 'S';
+                }
                 else if (city[i].Equals('Ć'))
                 {
                     newcity += 'C';
