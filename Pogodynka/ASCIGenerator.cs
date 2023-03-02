@@ -31,6 +31,7 @@ namespace API
             options.AddArgument("--log-level=3");
             options.AddArgument("--output=/dev/null");
             driver = new ChromeDriver(options);
+
         }
         public void printASCICity()
         {

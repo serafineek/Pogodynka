@@ -9,6 +9,7 @@ namespace Pogodynka
     public class FileWritter
     {
         private string forecastText { get; init; }
+        Menu menu;
         private string path { get; init; }
         private string fileName { get; init; }
 
@@ -24,6 +25,8 @@ namespace Pogodynka
             {          
                 File.WriteAllText(path + fileName + ".csv", forecastText,Encoding.UTF32);
                 Console.WriteLine("\nPlik " + fileName +".csv został zapisany!");
+                menu = new Menu();
+                menu.backToMenu();
             }
             catch(Exception e)
             {

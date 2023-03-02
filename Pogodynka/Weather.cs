@@ -4,12 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Pogodynka
 {
     public class Weather
     {
         private string city { get; init; }
+
+        private Menu menu;
         private string weatherCondition { get; init; }
         private int temperature { get; init; }
         private int pressure { get; init; }
@@ -45,13 +48,14 @@ namespace Pogodynka
             forecastText.Append($"Temperatura: {temperature}°C  \nCiśnienie: {pressure}hPa");
             forecastText.AppendLine("");
             forecastText.Append($"Prędkość Wiatru: {wind}km/h \nWilgotność powietrza: {airHumidity}");
-            Console.WriteLine(forecastText); 
+            Console.WriteLine(forecastText);
+            menu = new Menu();
+            menu.backToMenu();
         }
         public string longForeCast()
         {  
             ascitext = new(city);
             Console.Clear();
-           
             Console.WriteLine("\u001b[38;2;230;190;16m\n");
             ascitext.printASCICity();
             
