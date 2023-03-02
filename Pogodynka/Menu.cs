@@ -17,6 +17,13 @@ namespace Pogodynka
         string city;
         int days;
         private WeatherAPI api;
+        public void browserInformation()
+        {
+            Console.WriteLine("Program działa we wsparciu Google Chrome [Selenium ChromeDriver]");
+            Console.WriteLine("Za 3 sekundy program się uruchomi...");
+            Thread.Sleep(3000);
+            welcome();
+        }
         public void welcome()
         {
             Console.Clear();
